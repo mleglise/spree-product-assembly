@@ -29,8 +29,8 @@
        $('#search_hits').show();
      }, 
      type: 'POST', 
-     url: '<%= available_admin_product_parts_url(@product) %>'
-    });    
+     url: '<%= available_admin_product_variant_parts_url(@product , @variant) %>'
+    });
   }
 
   $("#searchtext").keypress(function (e) {
@@ -47,14 +47,14 @@
     search_for_parts();
   });
 
-  function subscribe_product_part_links()
+  function subscribe_product_variant_part_links()
   {
-    $("a.set_count_admin_product_part_link").click(function(){
+    $("a.set_count_admin_product_variant_part_link").click(function(){
       params = { count :  $("input", $(this).parent().parent()).val() };
       return make_post_request($(this), params);
     });
-    
-    $("a.remove_admin_product_part_link").click(function(){
+
+    $("a.remove_admin_product_variant_part_link").click(function(){
       return make_post_request($(this), {});
     });
   }
@@ -70,5 +70,5 @@
     return false;
   }
 
-  subscribe_product_part_links();
+  subscribe_product_variant_part_links();
 <% end -%>

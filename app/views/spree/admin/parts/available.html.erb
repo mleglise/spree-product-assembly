@@ -19,7 +19,7 @@
 	<tbody>
     <% @available_products.each do |product| %>
       <tr id="<%= dom_id(product) %>">
-        
+
         <td><%= product.name %></td>
         <td>
           <% if product.has_variants? %>
@@ -34,9 +34,9 @@
 		    <td class="actions">
           <%= image_tag "spinner.gif", :style => "display:none", :class => "spinner" %>
 		      <%= link_to(icon('add') + ' ' + Spree.t(:select), 
-		                  admin_product_parts_path(@product),
+		                  admin_product_variant_parts_path(@product, @variant),
 		                  :class => "add_product_part_link") %>
-		    </td>           
+		    </td>
       </tr>
     <% end %>
     <% if @available_products.empty? %>
