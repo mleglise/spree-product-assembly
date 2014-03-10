@@ -12,7 +12,7 @@ Spree::Product.class_eval do
   delegate :parts, :assemblies_part, :add_part, :remove_part, :set_part_count, to: :master
 
   def assembly?
-    parts.present?
+    variants_including_master.any?{ |v| v.parts.present? }
   end
 
   def assembly_cannot_be_part

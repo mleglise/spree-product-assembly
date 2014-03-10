@@ -11,12 +11,13 @@ module Spree
     context "bundle parts stock" do
       let(:parts) { (1..2).map { create(:variant) } }
 
-      before { product.parts << parts }
+      before { variant.parts << parts }
 
       context "one of them not in stock" do
         before do
-          part = product.parts.first
+          part = variant.parts.first
           part.stock_items.update_all backorderable: false
+          # variant.stock_items.last.update_attribute(:backorderable, false)
 
           expect(part).not_to be_in_stock
         end

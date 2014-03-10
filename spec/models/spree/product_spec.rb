@@ -13,12 +13,13 @@ describe Spree::Product do
       @part2 = create(:product, :can_be_part => true)
       @product.add_part @part1.master, 1
       @product.add_part @part2.master, 4
+      @product.reload
     end
-    
+
     it "is an assembly" do
       @product.should be_assembly
     end
-    
+
 
     it "cannot be part" do
       @product.should be_assembly

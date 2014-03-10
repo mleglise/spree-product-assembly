@@ -39,11 +39,27 @@ Spree::Variant.class_eval do
     parts.present?
   end
 
-  def assemblies_for(products)
-    assemblies.where(id: products)
+  def assemblies_for(variants)
+    ids = variants.map do |v|
+      v.class.name == 'Spree::Product' ? v.master.id : v.id
+    end
+
+    assemblies.where(id: ids)
   end
 
   def part?
     assemblies.exists?
+  end
+
+  def assembly_part(variant)
+    Spree::AssembliesPart.get(self.id, variant.id)
+  end
+
+  def parts_min_total_on_hand
+    min = self.parts.map do |part|
+      count = part.total_on_hand / assembly_part(part).count
+    end.min
+
+    min ? min : 0
   end
 end

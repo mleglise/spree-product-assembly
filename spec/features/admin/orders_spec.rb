@@ -9,7 +9,7 @@ describe "Orders" do
   let(:parts) { (1..3).map { create(:variant) } }
 
   before do
-    bundle.parts << [parts]
+    line_item.variant.parts = parts
     line_item.update_attributes!(quantity: 3)
     order.reload.create_proposed_shipments
     order.finalize! 
