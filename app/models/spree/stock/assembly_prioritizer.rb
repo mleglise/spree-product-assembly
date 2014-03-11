@@ -29,19 +29,13 @@ module Spree
             product = line_item.product
 
             if product.assembly?
-              line_item.variant_plus_master.each do |variant|
-                variant.parts.each do |part|
-                  update_packages_quantity(part, line_item, part_quantity_required(variant, line_item, part))
-                end
+              line_item.assemblies_parts.each do |assembly|
+                update_packages_quantity(assembly.part, line_item, assembly.count * line_item.quantity)
               end
             else
               update_packages_quantity(line_item.variant, line_item, line_item.quantity)
             end
           end
-        end
-
-        def part_quantity_required(variant, line_item, part)
-          variant.count_of(part) * line_item.quantity
         end
 
         def update_packages_quantity(variant, line_item, quantity)
