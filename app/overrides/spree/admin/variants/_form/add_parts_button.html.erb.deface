@@ -1,0 +1,4 @@
+<!-- insert_bottom "[data-hook=admin_variant_form_additional_fields]" -->
+<div class="field" data-hook="tax_category">
+  <%= link_to_with_icon 'icon-sitemap', Spree.t(:parts) , admin_variant_parts_path(@variant), class: 'button' %>
+</div>
