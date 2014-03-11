@@ -18,12 +18,12 @@
   	    <td class="actions">
           <%= image_tag "spinner.gif", :style => "display:none", :class => "spinner" %>
           <%= link_to(icon('edit') + ' ' + Spree.t(:update),
-                      set_count_admin_product_variant_part_url(@product, @variant, part),
-                      :class => "set_count_admin_product_variant_part_link") %>
+                      set_count_admin_variant_part_url(@variant, part),
+                      :class => "set_count_admin_variant_part_link") %>
 
           <%= link_to(icon('delete') + ' ' + Spree.t(:remove), 
-                      remove_admin_product_variant_part_url(@product, @variant, part),
-                      :class => "remove_admin_product_variant_part_link") %>
+                      remove_admin_variant_part_url(@variant, part),
+                      :class => "remove_admin_variant_part_link") %>
   	    </td>
       </tr>
     <% end %>
@@ -32,4 +32,4 @@
     <% end %>
   </tbody>
 </table>
-<%= javascript_tag("subscribe_product_variant_part_links();") if request.xhr? %>
+<%= javascript_tag("subscribe_variant_part_links();") if request.xhr? %>

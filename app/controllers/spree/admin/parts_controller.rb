@@ -1,5 +1,5 @@
 class Spree::Admin::PartsController < Spree::Admin::BaseController
-  before_filter :find_product
+  before_filter :find_variant
 
   def index
     @parts = @variant.parts
@@ -39,13 +39,8 @@ class Spree::Admin::PartsController < Spree::Admin::BaseController
   end
 
   private
-    def find_product
-      if params[:variant_id]
-        @variant = Spree::Variant.find(params[:variant_id])
-        @product = @variant.product
-      else
-        @product = Spree::Product.find_by(slug: params[:product_id])
-        @variant = @product.master
-      end
+    def find_variant
+      @variant = Spree::Variant.find(params[:variant_id])
+      @product = @variant.product
     end
 end
