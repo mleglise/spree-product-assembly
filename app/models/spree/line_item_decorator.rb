@@ -8,6 +8,10 @@ module Spree
       end
     end
 
+    def assemblies_parts
+      AssembliesPart.where(assembly_id: [variant.id, product.master.id])
+    end
+
     # Destroy and verify inventory so that units are restocked back to the
     # stock location
     def destroy_along_with_units

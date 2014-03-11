@@ -4,7 +4,7 @@ module Spree
   describe OrderInventoryAssembly do
     let(:order) { create(:order_with_line_items) }
     let(:line_item) { order.line_items.first }
-    let(:bundle) { line_item.product }
+    let(:bundle) { line_item.variant }
     let(:parts) { (1..3).map { create(:variant) } }
 
     before do
@@ -18,7 +18,7 @@ module Spree
 
     subject { OrderInventoryAssembly.new(line_item) }
 
-    context "inventory units count" do
+    context "inventlry units count" do
       it "calculates the proper value for the bundle" do
         expected_units_count = line_item.quantity * bundle.assemblies_parts.to_a.sum(&:count)
         expect(subject.inventory_units.count).to eql(expected_units_count)
