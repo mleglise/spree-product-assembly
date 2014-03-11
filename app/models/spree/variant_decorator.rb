@@ -62,4 +62,13 @@ Spree::Variant.class_eval do
 
     min ? min : 0
   end
+
+  # variant parts plus product parts
+  def all_parts
+    if is_master?
+      parts
+    else
+      parts + product.parts
+    end
+  end
 end

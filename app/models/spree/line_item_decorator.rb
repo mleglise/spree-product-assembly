@@ -36,9 +36,16 @@ module Spree
       variant.count_of(variant)
     end
 
+
+    def variant_plus_master
+      variants = [variant]
+      variants << product.master unless variant.is_master? 
+      variants
+    end
+
     private
       def update_inventory
-        if self.product.assembly? && order.completed?
+        if self.variant.assembly? && order.completed?
           OrderInventoryAssembly.new(self).verify(target_shipment)
         else
           OrderInventory.new(self.order, self).verify(target_shipment)
