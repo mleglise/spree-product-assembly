@@ -10,3 +10,4 @@ en:
     product_bundles: Product Bundles
     parts_included: Parts included
     part_of_bundle: 'Part of bundle %{sku}'
+    add_parts_after_create_variant: You will be able to add parts after creating a variant
