@@ -1,0 +1,9 @@
+<% if variant.assembly? %>
+  <ul class="variant-parts">
+    <% variant.assemblies_parts.each do |assembly| %>
+      <li>
+        <%= pluralize( assembly.count, assembly.part.name ) %>
+      </li>
+    <% end  %>
+  </ul>
+<% end %>

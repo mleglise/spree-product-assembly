@@ -1,10 +1,2 @@
 <!-- insert_bottom "#product-variants ul li" -->
-<% if variant.assembly? %>
-  <ul>
-    <% variant.parts.each do |part| %>
-      <li>
-        <%= part.name %> (<%= variant.count_of(part) %>)
-      </li>
-    <% end  %>
-  </ul>
-<% end  %>
+<%= render 'display_variants_parts', variant: variant  %>

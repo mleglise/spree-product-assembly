@@ -4,5 +4,5 @@
     <%= Spree.t(:add_parts_after_create_variant) %>
   <% else  %>
     <%= link_to_with_icon 'icon-sitemap', Spree.t(:parts) , admin_variant_parts_path(@variant), class: 'button' %>
-  <% end  %>
+  <% end %>
 </div>
