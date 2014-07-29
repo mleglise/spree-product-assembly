@@ -9,7 +9,7 @@ Spree::Product.class_eval do
 
   validate :assembly_cannot_be_part, :if => :assembly?
 
-  delegate :parts, :assemblies_part, :add_part, :remove_part, :set_part_count, to: :master
+  delegate :parts, :assemblies_part, :add_part, :remove_part, :set_part_count, :count_of, to: :master
 
   def assembly?
     variants_including_master.any? &:assembly?
