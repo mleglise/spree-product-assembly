@@ -19,8 +19,4 @@ Spree::Product.class_eval do
     errors.add(:can_be_part, Spree.t(:assembly_cannot_be_part)) if can_be_part
   end
 
-  private
-  def assemblies_part(variant)
-    Spree::AssembliesPart.get(self.id, variant.id)
-  end
 end

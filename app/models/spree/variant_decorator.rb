@@ -51,13 +51,13 @@ Spree::Variant.class_eval do
     assemblies.exists?
   end
 
-  def assembly_part(variant)
+  def assemblies_part(variant)
     Spree::AssembliesPart.get(self.id, variant.id)
   end
 
   def parts_min_total_on_hand
     min = self.parts.map do |part|
-      count = part.total_on_hand / assembly_part(part).count
+      count = part.total_on_hand / assemblies_part(part).count
     end.min
 
     min ? min : 0
