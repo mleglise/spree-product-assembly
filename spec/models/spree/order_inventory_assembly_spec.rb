@@ -18,7 +18,7 @@ module Spree
 
     subject { OrderInventoryAssembly.new(line_item) }
 
-    context "inventlry units count" do
+    context "inventory units count" do
       it "calculates the proper value for the bundle" do
         expected_units_count = line_item.quantity * bundle.assemblies_parts.to_a.sum(&:count)
         expect(subject.inventory_units.count).to eql(expected_units_count)
