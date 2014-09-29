@@ -43,4 +43,8 @@ class Spree::Admin::PartsController < Spree::Admin::BaseController
       @variant = Spree::Variant.find(params[:variant_id])
       @product = @variant.product
     end
+
+    def model_class
+      Spree::AssembliesPart
+    end
 end
