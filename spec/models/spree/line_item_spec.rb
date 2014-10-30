@@ -23,8 +23,7 @@ module Spree
         end
 
         it "doesn't save line item quantity" do
-          line_item = order.contents.add(variant, 10)
-          expect(line_item).not_to be_valid
+          expect { order.contents.add(variant, 10) }.to raise_error
         end
       end
 

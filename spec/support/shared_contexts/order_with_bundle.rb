@@ -1,5 +1,5 @@
 shared_context "product is ordered as individual and within a bundle" do
-  let(:order) { create(:order_with_line_items) }
+  let(:order) { create(:order_with_line_items, line_items_count: 2) }
   let(:parts) { (1..3).map { create(:variant) } }
 
   let(:bundle_variant) { order.variants.first }

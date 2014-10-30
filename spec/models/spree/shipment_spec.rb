@@ -42,7 +42,7 @@ module Spree
       end
 
       context "units are not associated with a line item" do
-        let(:order) { create(:shipped_order) }
+        let(:order) { create(:shipped_order, line_items_count: 2) }
         let(:shipment) { order.shipments.first }
 
         it "searches for line item if inventory unit doesn't have one" do
